@@ -1,0 +1,26 @@
+<mvc:View
+	displayBlock="true"
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+    controllerName="opensap.myapp.controller.App">
+	<Carousel>
+		<pages>
+			<Image 		src="https://thumbs.dreamstime.com/b/blauer-schmetterling-mit-sonne-im-weltraum-elemente-dieses-bildes-von-nasa-foto-hoher-qualit%C3%A4t-211939014.jpg"
+				height="600px"/>
+			<Image		src="https://thumbs.dreamstime.com/b/blauer-schmetterling-mit-sonne-im-weltraum-elemente-dieses-bildes-von-nasa-foto-hoher-qualit%C3%A4t-211939014.jpg"
+				height="600px"/>
+		</pages>
+	</Carousel>
+    <Button text="{i18n>showHelloButtonText}"
+        press="onShowHello"/>
+        <Input
+		value="{helloPanel>/recipient/name}"
+		description="Hello {helloPanel>/recipient/name}"
+		valueLiveUpdate="true"
+		width="60%"/>
+
+</mvc:View>
+
+
+
+
