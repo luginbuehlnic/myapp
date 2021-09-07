@@ -1,0 +1,12 @@
+{
+	"Name": "Nic",
+	"Street": "Beispielstr",
+	"HouseNumber": "44",
+	"ZIPCode": "8057",
+	"City": "Wallisellen",
+	"Country": "Schweiz",
+	"Url": "http://www.sap.com",
+	"Twitter": "@nic",
+	"Tel" : "+79 876 54 32",
+	"Email" : "info@nic.com"
+}
