@@ -1,46 +1,28 @@
-<mvc:View
-    displayBlock="true"
-    xmlns:core="sap.ui.core"
+<mvc:View displayBlock="true"
+	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
 	xmlns:f="sap.ui.layout.form"
-	xmlns="sap.m"
-    controllerName="opensap.myapp.controller.App"
+	xmlns="sap.m" controllerName="opensap.myapp.controller.App"
 	xmlns:mvc="sap.ui.core.mvc">
-    <App>
+	<App>
 		<pages>
 			<Page title="openSAP - Developing with SAPUI5">
 				<content>
-					<IconTabBar
-						id="idTopLevelIconTabBar"
-                        class="sapUiResponsiveContentPadding">>
+					<IconTabBar id="idTopLevelIconTabBar" class="sapUiResponsiveContentPadding" selectedKey="db">
 						<items>
 							<IconTabFilter id="start" text="{i18n>gettingStartedFilter}">
-    <Carousel>
-		<pages>
-			<Image 		src="https://thumbs.dreamstime.com/b/blauer-schmetterling-mit-sonne-im-weltraum-elemente-dieses-bildes-von-nasa-foto-hoher-qualit%C3%A4t-211939014.jpg"
-				height="600px"/>
-			<Image		src="https://images.unsplash.com/photo-1612021470627-ca1cb2d2ee92?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmlsZGVyfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"
-				height="600px"/>
-		</pages>
-	</Carousel>
-    <Button
-		text="{i18n>showHelloButtonText}"
-		press="onShowHello"/>
-    <Input
-		value="{helloPanel>/recipient/name}"
-		description="Hello {helloPanel>/recipient/name}"
-		valueLiveUpdate="true"
-		width="60%"/>
-                            </IconTabFilter>                                       
-                            <IconTabFilter id="layouts" text="{i18n>layoutFilter}">
-								<MessageStrip
-									type="Information"
-									showIcon="true"
-									text="Here's a Form Layout inside an Icon Tab Bar …"/>
-								<f:SimpleForm id="simpleFormChange"
-									title="Address"
-									editable="true"
-									class="editableForm sapUiSmallMarginTopBottom">
+								<Carousel>
+									<pages>
+										<Image src="https://thumbs.dreamstime.com/b/blauer-schmetterling-mit-sonne-im-weltraum-elemente-dieses-bildes-von-nasa-foto-hoher-qualit%C3%A4t-211939014.jpg" height="600px"/>
+										<Image src="https://images.unsplash.com/photo-1612021470627-ca1cb2d2ee92?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YmlsZGVyfGVufDB8fDB8fA%3D%3D&amp;ixlib=rb-1.2.1&amp;w=1000&amp;Mq=80" height="600px"/>
+									</pages>
+								</Carousel>
+								<Button text="{i18n>showHelloButtonText}" press="onShowHello"/>
+								<Input value="{helloPanel>/recipient/name}" description="Hello {helloPanel>/recipient/name}" valueLiveUpdate="true" width="60%"/>
+							</IconTabFilter>
+							<IconTabFilter id="layouts" text="{i18n>layoutFilter}">
+								<MessageStrip type="Information" showIcon="true" text="Here's a Form Layout inside an Icon Tab Bar …"/>
+								<f:SimpleForm id="simpleFormChange" title="Address" editable="true" class="editableForm sapUiSmallMarginTopBottom">
 									<f:content>
 										<Label text="{i18n>layoutFormName}"/>
 										<Input value="{address>/Name}"/>
@@ -64,14 +46,22 @@
 								</f:SimpleForm>
 								<Toolbar>
 									<ToolbarSpacer/>
-									<Button
-										text="{i18n>layoutPublishButton}"
-                                        icon="sap-icon://outbox"
-										type="Accept"/>
-									<Button
-										text="{i18n>layoutDraftButton}"
-                                        icon="sap-icon://save" />
+									<Button text="{i18n>layoutPublishButton}" icon="sap-icon://outbox" type="Accept"/>
+									<Button text="{i18n>layoutDraftButton}" icon="sap-icon://save" />
 								</Toolbar>
+							</IconTabFilter>
+							<IconTabFilter text="{i18n>dataBindingFilter}" key="db">
+								<content>
+									<List headerText="{i18n>productListTitle}" items="{/ProductSet}">
+										<items>
+											<ObjectListItem 
+											title="{Name}" 
+											number="{Price}" 
+											intro="{ProductID}" 
+											numberUnit="{CurrencyCode}"/>
+										</items>
+									</List>
+								</content>
 							</IconTabFilter>
 						</items>
 					</IconTabBar>
