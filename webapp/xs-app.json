@@ -2,13 +2,23 @@
     "welcomeFile": "index.html", 
     "routes": [ 
       { 
-        "source": "^/destinations/ES5/sap/opu/odata/IWBEP/GWSAMPLE_BASIC/",
+        "source": "^/sap/opu/odata/IWBEP/GWSAMPLE_BASIC",
         "destination": "ES5", 
         "csrfProtection": false
       },  
+      
       { 
         "source": "^/(.*)", 
         "localDir": "html5-apps-repo-rt" 
-      } 
+      },
+      {
+        "path": "/destinations/ES5",
+        "target": {
+          "type": "destination",
+            "name": "ES5"
+            },
+        "description": "ES5 Demo Service"
+      }
+  
     ] 
   } 
