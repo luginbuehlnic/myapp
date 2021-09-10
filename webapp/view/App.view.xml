@@ -18,7 +18,12 @@
 									</pages>
 								</Carousel>
 								<Button text="{i18n>showHelloButtonText}" press="onShowHello"/>
-								<Input value="{helloPanel>/recipient/name}" description="Hello {helloPanel>/recipient/name}" valueLiveUpdate="true" width="60%"/>
+								<Input value="{
+									path: 'helloPanel>/recipient/name',
+									type: 'sap.ui.model.type.Float',
+									constraints: {maximum : 3000}
+								}"
+								description="Hello {helloPanel>/recipient/name}" valueLiveUpdate="false" width="60%"/>	
 							</IconTabFilter>
 							<IconTabFilter id="layouts" text="{i18n>layoutFilter}">
 								<MessageStrip type="Information" showIcon="true" text="Here's a Form Layout inside an Icon Tab Bar …"/>
@@ -52,15 +57,63 @@
 							</IconTabFilter>
 							<IconTabFilter text="{i18n>dataBindingFilter}" key="db">
 								<content>
-									<List headerText="{i18n>productListTitle}" items="{/ProductSet}">
+									<List id="productsList" items="{
+										path : '/ProductSet',
+										parameters : {
+											expand: 'ToSupplier'
+										},
+										sorter : {
+											path : 'Category',
+											group : true
+										}
+									}"
+									growing="true"
+									growingThreshold="5"
+									growingScrollToLoad="false">
+										<headerToolbar>
+											<Toolbar>
+												<Title text="{i18n>productListTitle}"/>
+												<ToolbarSpacer/>
+												<SearchField width="50%" search="onFilterProducts"/>
+											</Toolbar>
+										</headerToolbar>
 										<items>
-											<ObjectListItem 
-											title="{Name}" 
-											number="{Price}" 
-											intro="{ProductID}" 
-											numberUnit="{CurrencyCode}"/>
+											<ObjectListItem title="{Name}" number="{
+												parts: [
+												{path: 'Price'},
+												{path: 'CurrencyCode'}
+												],
+												type: 'sap.ui.model.type.Currency',
+												formatOptions: {
+													showMeasure: false
+												}
+											}" numberUnit="{CurrencyCode}" numberState="{= ${Price} > 500 ? 'Error' : 'Success'}" 
+											intro="{ProductID}" press="onItemSelected" type="Active">
+												<firstStatus>
+													<ObjectStatus text="{
+														parts: [
+															{path: 'WeightUnit'},
+															{path: 'WeightMeasure'}
+														],
+														formatter : '.formatter.delivery'
+													}"/>
+												</firstStatus>
+												<secondStatus>
+													<ObjectStatus 
+														title="{i18n>statusDeliveryForm}"
+														text="{ToSupplier/Address/City}"/>
+												</secondStatus>
+											</ObjectListItem>
 										</items>
 									</List>
+									<Panel id="productDetailsPanel" headerText="{i18n>productDetailPanelHeader}" visible="false">
+										<l:Grid>
+											<Text text="{i18n>productDetailPanelID}: {ProductID}"/>
+											<Text text="{i18n>productDetailPanelName}: {Name}"/>
+											<Text text="{i18n>productDetailPanelDescription}:\n {Description}"/>
+											<Text text="{i18n>productDetailPanelPrice}: {Price}"/>
+										</l:Grid>
+									</Panel>
 								</content>
 							</IconTabFilter>
 						</items>

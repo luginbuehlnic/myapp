@@ -8,14 +8,14 @@
 		"description": "{{appDescription}}",
 		"applicationVersion": {
 			"version": "1.0.0"
-		}
-	},
+		},
 	"dataSources": {
-		"ES5": {
-			"uri": "/metadata.xml",
-			"type": "OData",
-			"settings": {
-				"odataVersion": "2.0"
+			"ES5": {
+				"uri": "sap/opu/odata/IWBEP/GWSAMPLE_BASIC/",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
+				}
 			}
 		}
 	},
@@ -54,9 +54,10 @@
 		        "uri": "model/Address.json"
 	        },
 			"" : {
-				"dataSource": "metadata.xml"
+				"dataSource": "ES5"
 			}
 		},
+		"handleValidation": true,
 		"autoPrefixId": true,
 		"dependencies": {
 			"minUI5Version": "1.34",
