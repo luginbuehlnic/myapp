@@ -43,6 +43,38 @@ sap.ui.define([
 					//aFilter.push(new Filter("Category", FilterOperator.Contains, sQuery));
 			}
 			oBinding.filter(aFilter);
-		}
+		},
+		onSave : function () {
+			// read msg from i18n model
+			var oBundle = this.getView().getModel("i18n").getResourceBundle();
+			var sMsg = oBundle.getText("saveMsg");
+
+			if(this.byId("userInfoPanel").isVisible = 'true'){
+				print('');
+			} else {
+				// show message
+				MessageToast.show(sMsg);
+			}
+			
+		},
+
+		onShow : function(oEvent){
+			// print('Hallo');
+			var oSelectedItem = oEvent.getSource();
+			// var oContext = oSelectedItem.getBindingContext();
+			// var sPath = oContext.getPath();
+			var oProductDetailPanel = this.byId("userInfoPanel");
+
+			// oProductDetailPanel.bindElement({ path : sPath});
+			if(oProductDetailPanel.visibility == "true"){
+				console.log('nei');
+				this.byId("userInfoPanel").setVisible(false);
+			} else {
+				console.log('ja');
+				this.byId("userInfoPanel").setVisible(true);
+			}
+			
+		},
+
 	});
 });
