@@ -1,0 +1,14 @@
+<c:FragmentDefinition xmlns="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout">
+    <Panel id="userInfoPanel" headerText="{i18n>userInfo}" visible="false">
+        <l:Grid>
+            <Text text="{i18n>layoutFormName} : {address>/Name}"/>
+            <Text text="{i18n>layoutFormStreet} : {address>/Street}"/>
+            <Text text="{i18n>layoutFormHouseNumber} : {address>/HouseNumber}"/>
+            <Text text="{i18n>layoutFormZIPCode} : {address>/ZIPCode}"/>
+            <Text text="{i18n>layoutFormCity} : {address>/City}"/>
+            <Text text="{i18n>layoutFormCountry} : {address>/Country}"/>
+        </l:Grid>
+    </Panel>
+</c:FragmentDefinition>

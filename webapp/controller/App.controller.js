@@ -49,7 +49,7 @@ sap.ui.define([
 			var oBundle = this.getView().getModel("i18n").getResourceBundle();
 			var sMsg = oBundle.getText("saveMsg");
 
-			if(this.byId("userInfoPanel").isVisible = 'true'){
+			if(this.byId("userInfoPanel").isVisible != 'false'){
 				print('');
 			} else {
 				// show message
@@ -66,12 +66,12 @@ sap.ui.define([
 			var oProductDetailPanel = this.byId("userInfoPanel");
 
 			// oProductDetailPanel.bindElement({ path : sPath});
-			if(oProductDetailPanel.visibility == "true"){
+			if(oProductDetailPanel.visibility !== "true"){
 				console.log('nei');
-				this.byId("userInfoPanel").setVisible(false);
+				this.byId("userInfoPanel").setVisible(true);
 			} else {
 				console.log('ja');
-				this.byId("userInfoPanel").setVisible(true);
+				this.byId("userInfoPanel").setVisible(false);
 			}
 			
 		},
