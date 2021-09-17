@@ -49,13 +49,21 @@ sap.ui.define([
 			var oBundle = this.getView().getModel("i18n").getResourceBundle();
 			var sMsg = oBundle.getText("saveMsg");
 
-			if(this.byId("userInfoPanel").isVisible != 'false'){
+			if(this.byId("userInfoPanel").getVisible() === true){
 				print('');
 			} else {
 				// show message
 				MessageToast.show(sMsg);
 			}
 			
+		},
+
+		onPopover : function (oEvent) {
+			var oPopover = this.byId("userInfoPopover");
+			var oSource = oEvent.getSource();
+			oPopover.bindElement(oSource.getBindingContext().getPath());
+			// open dialog
+			oPopover.openBy(oEvent.getParameter("domRef"));
 		},
 
 		onShow : function(oEvent){
@@ -66,7 +74,7 @@ sap.ui.define([
 			var oProductDetailPanel = this.byId("userInfoPanel");
 
 			// oProductDetailPanel.bindElement({ path : sPath});
-			if(oProductDetailPanel.visibility !== "true"){
+			if(oProductDetailPanel.getVisible() === false){
 				console.log('nei');
 				this.byId("userInfoPanel").setVisible(true);
 			} else {

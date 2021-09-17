@@ -1,6 +1,7 @@
 <mvc:View displayBlock="true"
 	xmlns:core="sap.ui.core"
 	xmlns:l="sap.ui.layout"
+	xmlns:semantic="sap.f.semantic"
 	xmlns:f="sap.ui.layout.form"
 	xmlns="sap.m" controllerName="opensap.myapp.controller.App"
 	xmlns:mvc="sap.ui.core.mvc">
@@ -10,7 +11,7 @@
 				<content>
 					<IconTabBar id="idTopLevelIconTabBar" class="sapUiResponsiveContentPadding" selectedKey="db">
 						<items>
-							<IconTabFilter id="start" text="{i18n>gettingStartedFilter}">
+							<IconTabFilter id="start" text="{i18n>gettingStartedFilter}" key="db">
 								<Carousel>
 									<pages>
 										<Image src="https://thumbs.dreamstime.com/b/blauer-schmetterling-mit-sonne-im-weltraum-elemente-dieses-bildes-von-nasa-foto-hoher-qualit%C3%A4t-211939014.jpg" height="600px"/>
@@ -24,7 +25,7 @@
 									constraints: {maximum : 3000}
 								}" description="Hello {helloPanel>/recipient/name}" valueLiveUpdate="false" width="60%"/>
 							</IconTabFilter>
-							<IconTabFilter id="layouts" text="{i18n>layoutFilter}" key="db">
+							<IconTabFilter id="layouts" text="{i18n>layoutFilter}">
 								<MessageStrip type="Information" showIcon="true" text="Here's a Form Layout inside an Icon Tab Bar …"/>
 								<f:SimpleForm id="simpleFormChange" title="Address" editable="true" class="editableForm sapUiSmallMarginTopBottom">
 									<f:content>
@@ -63,8 +64,8 @@
 										<Text text="{i18n>layoutFormCountry} : {address>/Country}"/>
 									</l:Grid>
 								</Panel> -->
-								<core:Fragment fragmentName="opensap.myapp.view.UserInfo" type="XML"/>																
-							</IconTabFilter>							
+								<core:Fragment fragmentName="opensap.myapp.view.UserInfo" type="XML"/>
+							</IconTabFilter>
 							<IconTabFilter text="{i18n>dataBindingFilter}">
 								<content>
 									<List id="productsList" items="{
@@ -124,6 +125,20 @@
 						</items>
 					</IconTabBar>
 				</content>
+				<ResponsivePopover title="{i18n>userInfo}" id="userInfoPopover" class="sapUIPopupWidthPadding">
+            <content>
+                <l:Grid>
+                    <l:content>
+                        <Text text="{i18n>layoutFormName}: {address>/Name}"/>
+                        <Text text="{i18n>layoutFormStreet}: {address>/Street}"/>
+                        <Text text="{i18n>layoutFormHouseNumber}: {address>/HouseNumber}"/>
+                        <Text text="{i18n>layoutFormZIPCode}: {address>/ZIPCode}"/>
+                        <Text text="{i18n>layoutFormCity}: {address>/City}"/>
+                        <Text text="{i18n>layoutFormCountry}: {address>/Country}"/>
+                    </l:content>
+                </l:Grid>
+            </content>
+        </ResponsivePopover>
 			</Page>
 		</pages>
 	</App>
